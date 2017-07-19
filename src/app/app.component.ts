@@ -2,9 +2,13 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 
+import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { DevicePage } from '../pages/device/device';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -16,13 +20,24 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  createAdMob() {
+    const bannerConfig: AdMobFreeBannerConfig = {
+      isTesting: true,
+      autoShow: true
+    };
+  }
+  
+
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, 
+    public admob: AdMobFree) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'List', component: ListPage },
+      { title: 'Device', component: DevicePage },
+      { title: 'About', component: AboutPage }
     ];
 
   }

@@ -15,5 +15,11 @@
 
 </ion-menu>
 
+<ion-navbar>
+  <ion-buttons end>
+    <button name="help" (click)="openAbout()">About</button>
+  </ion-buttons>
+</ion-navbar>
+
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
